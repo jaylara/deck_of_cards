@@ -1,8 +1,8 @@
-var prompt = require('./tools/prompt-sync')();
-var yn = require('./tools/yn');
+var prompt = require('./js-tools/prompt-sync')();
+var yn = require('./js-tools/yn');
 
-// 1. Make the function deck_o_cards assemble an array of cards using the provided suits and values arrays.
-// Each card in the deck should be an object formatted as: {suit: 'hearts', value: 'A'}
+// 1. Create an array of cards using suits and values.
+// Each card in the deck should be an object formatted as: {suit}{value}
 function deck_o_cards() {
   var values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
   var suits = ['♥', '♦', '♣', '♠'];
@@ -28,7 +28,7 @@ function deck_o_cards() {
   console.log(`The top card is ${cardToString(shuffledCards[0])}`);
   printFullDeck(shuffledCards);
 
-  // BONUS: Make a new array that pulls the top 5 cards and gives you a hand of poker!!
+  // Pull the top 5 cards and display
   console.log("----");
   var draw = prompt("How many cards would you like to draw? ");
   for (var i = 0; i < draw; i++)

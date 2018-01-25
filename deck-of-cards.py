@@ -2,17 +2,17 @@
 
 import random
 
-#Represents a single playing card
+# Represents a single playing card
 class Card:
     def __init__(self,p_suit="J", p_value="0"):
         self.create(p_suit,p_value)
 
-    #creates a card with a suit, value pair
+    # creates a card with a suit, value pair
     def create(self,p_suit="J", p_value="0"):
         self.suit = p_suit
         self.value = p_value
 
-    #returns string representation of the card
+    # returns string representation of the card
     def __str__(self):
         return "{0}{1} ".format(self.suit, self.value)
 
@@ -23,7 +23,8 @@ class Deck:
         self.deck = []
         self.create()
 
-    # 1. Make the function deck_o_cards assemble an array of cards using the provided suits and values arrays.
+    # 1. Create an array of cards using suits and values.
+    # Each card in the deck should be an object formatted as: {suit}{value}
     def create(self):
         values = ('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K')
         suits = ('♥', '♦', '♣', '♠')
@@ -34,7 +35,7 @@ class Deck:
           for v in values:
             self.deck.append(Card(s, v))
 
-    #2. Shuffle the cards. Fisher-Yates Shuffle: http://stackoverflow.com/a/6274398
+    # 2. Shuffle the cards. Fisher-Yates Shuffle: http://stackoverflow.com/a/6274398
     def shuffle(self):
         length = len(self.deck)
         for i in range(length):
@@ -44,19 +45,19 @@ class Deck:
             self.deck[i] = self.deck[index]
             self.deck[index] = temp
 
-    #removes the deck's top element (first card) and returns the value
+    # removes the deck's top element (first card) and returns the value
     def draw(self):
         return self.deck.pop()
 
-    #returns the top element (first card) in the deck
+    # returns the top element (first card) in the deck
     def peek(self):
         return self.deck[0]
 
-    #returns size (number of items) in the deck
+    # returns size (number of items) in the deck
     def size(self):
         return len(self.deck)
 
-    #returns string representation of the deck
+    # returns string representation of the deck
     def __str__(self):
         tmp = ""
         for i in self.deck:
@@ -80,7 +81,7 @@ print('Shuffled Deck:')
 print(deck)
 print('----')
 
-# BONUS: Make a new array that pulls the top 5 cards and gives you a hand of poker!!
+# Pull the top 5 cards and gives you a hand of poker
 for i in range(0,5):
   print('Draw {0}: {1}'.format(i+1,deck.draw()))
 
